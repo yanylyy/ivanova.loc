@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden { display: none !important; }
+        .auth-panel {
+            background-color: #ffffff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            margin-bottom: 25px;
+        }
+        .auth-error {
+            color: #975259;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="m-3 col-md-6">
+        <!-- Блок авторизации сверху -->
+        <div class="auth-panel">
+            <!-- Состояние гостя -->
+            <div id="guestPanel">
+                <button type="button" id="showLoginBtn" class="btn btn-primary">Войти</button>
+            </div>
+
+            <!-- Форма входа -->
+            <form id="loginForm" class="hidden" style="box-shadow: none; padding: 0; margin-bottom: 0;">
+                <div class="mb-3">
+                    <label for="loginNickname" class="form-label">Логин</label>
+                    <input type="text" id="loginNickname" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="loginPassword" class="form-label">Пароль</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Войти</button>
+                <button type="button" id="cancelLoginBtn" class="btn btn-warning">Отмена</button>
+                <div id="loginError" class="auth-error"></div>
+            </form>
+
+
+            <div id="userPanel" class="hidden">
+                <span class="me-2">Пользователь: <strong id="userNameText"></strong></span>
+                <button type="button" id="logoutBtn" class="btn btn-danger">Выход</button>
+            </div>
+        </div>
+
+        <form id="articleForm" class="hidden">
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Название статьи</label>
+                <input type="text" id="inputName" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputText" class="form-label">Текст статьи</label>
+                <textarea id="inputText" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="inputImg" class="form-label">Изображение</label>
+                <input type="file" id="inputImg" class="form-control">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Создать статью">
+        </form>
+
+
+        <ul class="articles"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
